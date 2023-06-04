@@ -38,12 +38,12 @@ Type Your Code Here
 With the aid of this bot, the process will be easier and much more faster over the existing way of ticket booking. It improves their way of living and technological advancement is applied in a way that everyone can improve their standard of living.
 
 ## _Results_ :
-  -> Faster and efficient way of ticket booking for the Visually Impaired.
+  **->** Faster and efficient way of ticket booking for the Visually Impaired.
 
-  -> Reduces time consumption and mediation of other humans.
+  **->** Reduces time consumption and mediation of other humans.
 
-  -> Can book the ticket in minutes.
+  **->** Can book the ticket in minutes.
 
-  -> No sharing of personal data to others.
+  **->** No sharing of personal data to others.
   
-  -> Booking tickets by themselves along with the bot.
+  **->** Booking tickets by themselves along with the bot.
