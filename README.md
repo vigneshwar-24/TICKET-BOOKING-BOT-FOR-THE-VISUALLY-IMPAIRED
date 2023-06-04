@@ -13,17 +13,17 @@ Ticket Booking Bot for the Visually Impaired project is to develop a user-friend
 The Ticket Booking Bot for the Visually Impaired project aims to create an accessible and inclusive ticket booking system for individuals with visual impairments. By utilizing artificial intelligence and natural language processing, the project seeks to develop a conversational interface that understands and responds to the specific needs of visually impaired users. The bot will enable users to search for and book tickets for various modes of transportation and entertainment activities through voice commands or text input. Integration with ticketing platforms and databases will ensure real-time availability and accurate information retrieval. Ultimately, the project aims to enhance the independence and convenience of visually impaired individuals in booking tickets, promoting inclusivity and equal access to travel and entertainment experiences.
 
 ## Methodology
--> Collect the data about the individual initially.
+- Collect the data about the individual initially.
   
--> Now store the collected data in the database.
+- Now store the collected data in the database.
   
--> Their individual data will be stored in the database.
+- Their individual data will be stored in the database.
 
--> They can now give the details about the destination, their travel data & time and all necessary details.
+- They can now give the details about the destination, their travel data & time and all necessary details.
 
-->The bot will go to the ticket booking website and look for the specifications and fills the details and books the ticket.
+- The bot will go to the ticket booking website and look for the specifications and fills the details and books the ticket.
 
--> It will now give the ticket details back to the user.
+- It will now give the ticket details back to the user.
   
 ## Project Architecture:
 <img width="278" alt="mini project" src="https://github.com/vigneshwar-24/TICKET-BOOKING-BOT-FOR-THE-VISUALLY-IMPAIRED/assets/77089276/1005ce54-1db9-45b1-8c7f-db9af003a5c9">
