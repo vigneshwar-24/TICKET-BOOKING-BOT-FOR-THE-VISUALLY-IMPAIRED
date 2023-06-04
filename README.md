@@ -1,6 +1,6 @@
 # <p align="center">TICKET BOOKING BOT FOR THE VISUALLY IMPAIRED
 
-## _Introduction_ :
+## *Introduction* :
 Booking ticket for the Visually Impaired requires human assistance which makes them dependent on others all the time. In the modern era, technological advancements is growing at a rapid speed. So, with the use of an ticket booking bot we can make process of booking tickets easier for the Visually Impaired.
   
 ## _Purpose of the Project_ :
