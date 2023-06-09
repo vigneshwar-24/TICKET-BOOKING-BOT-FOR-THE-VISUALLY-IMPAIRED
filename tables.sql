@@ -1,0 +1,3 @@
+USE IRCTC
+
+SELECT * from TRAINS
