@@ -238,6 +238,9 @@ if __name__ == '__main__':
         logic_checking()
 ``` 
 
+## Output:
+![ticket](https://github.com/vigneshwar-24/TICKET-BOOKING-BOT-FOR-THE-VISUALLY-IMPAIRED/assets/75234646/68f83354-d0fa-4811-9897-81860ac17d68)
+
 ## _Conclusion_ :
 With the aid of this bot, the process will be easier and much more faster over the existing way of ticket booking. It improves their way of living and technological advancement is applied in a way that everyone can improve their standard of living.
 
