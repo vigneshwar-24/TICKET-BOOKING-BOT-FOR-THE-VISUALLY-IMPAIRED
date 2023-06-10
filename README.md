@@ -28,6 +28,22 @@ The Ticket Booking Bot for the Visually Impaired project aims to create an acces
 ## _Project Architecture_ :
 <img width="278" alt="mini project" src="https://github.com/vigneshwar-24/TICKET-BOOKING-BOT-FOR-THE-VISUALLY-IMPAIRED/assets/77089276/1005ce54-1db9-45b1-8c7f-db9af003a5c9">
 
+## Algorithm :
+
+
+1. Create two files, one for speech recognition and other for ticket booking
+2. Initialize the speech recognition and text-to-speech engine
+3. Implement functions to collect user details (name, age, Aadhar number) and travel details (source and destination locations) using speech input.
+4. Create a sql file which has the real time data of Irctc trains and download and save it as a json file
+5. Load the train data from a file (train.json) using the json module
+6. Implement a function to search for matching trains based on the provided source and destination.
+7. If no trains are found, inform the user and exit the program
+8. If only one train is found, inform the user about the available train and ask if they want to book it. If yes, generate a ticket using the train details and exit the program
+9. If multiple trains are found, present the available options to the user and ask them to choose a specific train slot (morning, afternoon, evening, or night)
+10. Validate the user's choice and book the selected train by generating a ticket using the train details
+11. Ask the user to wait until the ticket has been confirmed 
+
+
   
 ## _Program_ :
 ### voice_bot.py
