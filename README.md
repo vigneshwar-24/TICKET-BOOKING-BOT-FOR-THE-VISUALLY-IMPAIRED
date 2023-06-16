@@ -25,7 +25,7 @@ The Ticket Booking Bot for the Visually Impaired project aims to create an acces
 
   - It will now give the ticket details back to the user.
   
-## _Project Architecture_ :
+## _Project FlowChart :
 ![Screenshot 2023-06-12 223744](https://github.com/vigneshwar-24/TICKET-BOOKING-BOT-FOR-THE-VISUALLY-IMPAIRED/assets/75234646/d85b2f7e-5f2b-426d-9918-e9be665ec4fc)
 
 ## Algorithm :
