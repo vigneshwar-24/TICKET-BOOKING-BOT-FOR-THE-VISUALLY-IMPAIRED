@@ -131,9 +131,9 @@ def get_travel_details():
 ### booking.py
 ```python
 import json
+import cv2
 from voice_bot import get_travel_details, get_user_details, SpeakText, recognize_speech
 from PIL import Image, ImageDraw, ImageFont
-
 
 # Function to search for matching trains based on source and destination
 def search_trains(source, destination):
@@ -141,9 +141,6 @@ def search_trains(source, destination):
     for train in train_data:
         if train['Source'].lower() == source.lower() and train['Destination'].lower() == destination.lower():
             matched_trains.append(train)
-    else:
-        SpeakText("There are no trains available. Sorry I hope you could use another mode of transport")
-        return None
     return matched_trains
 
 
@@ -162,25 +159,57 @@ def generate_ticket(ticket_data):
     draw.text((50, 110), f"Aadhar Number: {user_details['aadhar_number']}", font=content_font, fill='black')
     draw.text((50, 140), f"Train Name: {ticket_data['Train_Name']}", font=content_font, fill='black')
     draw.text((50, 170), f"Train Number: {ticket_data['Train_num']}", font=content_font, fill='black')
-    draw.text((50, 200), f"Seat Number: D45", font=content_font, fill='black')
     draw.text((50, 230), f"Timings: {ticket_data['Timings']}", font=content_font, fill='black')
 
     # Save the ticket image
     ticket_image.save('ticket.png')
+
+    # Capture image from webcam
+    webcam = cv2.VideoCapture(0)
+    ret, frame = webcam.read()
+    cv2.imwrite('photo.png', frame)
+    webcam.release()
+
+    # Open ticket and photo images
+    ticket = Image.open('ticket.png')
+    photo = Image.open('photo.png')
+
+    # Resize photo to fit in the ticket
+    photo = photo.resize((100, 100))
+
+    # Create a new image with ticket and photo combined
+    combined_image = Image.new('RGB', (600, 600), color='white')
+    combined_image.paste(ticket, (0, 0))
+    combined_image.paste(photo, (400, 50))
+
+    # Save the combined image
+    combined_image.save('final_ticket.png')
+
     SpeakText(f"Train Name is {ticket_data['Train_Name']}, train number is {ticket_data['Train_num']} and train timings is {ticket_data['Timings']} ")
-    SpeakText("Ticket is generated. I hope you enjoy your ride and make sure to arrive at the station before half an hour.")
+    SpeakText("I'll let you know after we book the ticket from IRCTC")
+    print("I'll let you know after we book the ticket from IRCTC")
 
 def book(train):
-    SpeakText("Do you want me to book the train?")
-    print("Do you want me to book the train?")
-    if recognize_speech().lower() == 'yes':
-        print("Train booked successfully.")
-        SpeakText("Train booked successfully.")
-        generate_ticket(train)  # Pass the train details instead of user_details
-    else:
-        print("Okay. I hope I was of good assistance to you. Thank you.")
-        SpeakText("As you wish. I hope I was of good assistance to you. If you wanna book tickets do ask to me. Thank you.")
-        
+    while True:
+        try:
+            SpeakText("Do you want me to reserve a seat for you?")
+            print("Do you want me to reserve a seat for you?")
+            response = recognize_speech().lower()
+            
+            if response == 'yes':
+                print("Your seat has been reserved successfully. Will soon get in touch with you")
+                SpeakText("Your seat has been reserved successfully. Will soon get in touch with you")
+                generate_ticket(train)
+                break
+            else:
+                print("Okay. I hope I was of good assistance to you. Thank you.")
+                SpeakText("As you wish. I hope I was of good assistance to you. If you want to book tickets, do ask me. Thank you.")
+                break
+                
+        except AttributeError:
+            print("Sorry, I didn't catch that. Please try again.")
+            SpeakText("Sorry, I didn't catch that. Please try again.")
+
 def classify_timings(timings):
     hour = int(timings.split(':')[0])
 
@@ -197,10 +226,9 @@ def classify_timings(timings):
 
 
 def logic_checking():
-    if matched_trains == None:
-        return 1
     if len(matched_trains) == 0:
         SpeakText("Sorry, no train is found. Can't book the train.")
+        print("Sorry, no train is found. Can't book the train.")
     else:
         if len(matched_trains) == 1:
             SpeakText(f"There is only one train available and the timing is {matched_trains[0]['Timings']}")
@@ -217,7 +245,9 @@ def logic_checking():
                 SpeakText(f"{classification} train")
 
             while True:
-                user_choice = SpeakText("Tell me which train slot you want? (morning, afternoon, evening, night)")
+                user_choice = SpeakText("Tell me which train slot you want? by slot i mean if its")
+                for i in slot:
+                    SpeakText(i)
                 inde = recognize_speech().lower()
                 if all(item.lower() != inde for item in slot):
                     print('The selected slot has no train available. Please try again')
@@ -228,21 +258,27 @@ def logic_checking():
 
 
 if __name__ == '__main__':
-
+    # Getting input about user and travel details and storing it in this dictionary
+    SpeakText("Hi I'm your Voice assistant for reserving your seat. i will ask for your details to reserve a seat for you") 
     user_details = get_user_details()
     travel_details = get_travel_details()
     
-    print("User Details:", user_details)
-    print("Travel Details:", travel_details)
+    for key, value in user_details.items():
+        print(f"{key} : {value}")
+        
+    for key, value in travel_details.items():
+        print(f"{key} : {value}")
 
     # Load the train data from the file
-    with open('IRCTC/train.json') as file:
+    with open('final_code/train.json') as file:
         train_data = json.load(file)
         
+    name = user_details['name']
+    age = user_details['age']
+    aadhar_number = user_details['aadhar_number']
+
     source =  travel_details['from_place']
     destination = travel_details['to_place']
-    
-    
 
     # Search for matching trains
     matched_trains = search_trains(source, destination)
