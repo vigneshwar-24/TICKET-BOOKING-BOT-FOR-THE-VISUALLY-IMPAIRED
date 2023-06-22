@@ -93,14 +93,12 @@ def get_user_details():
             aadhar_number = recognize_speech()
             if aadhar_number:
                 SpeakText("Your Aadhar number is " + aadhar_number)
-
+                
     return {
-        'name': name,
-        'age': age,
-        'aadhar_number': aadhar_number,
+        'name': name.capitalize(),
+        'age': int(age),
+        'aadhar_number': aadhar_number
     }
-
-
 
 def get_travel_details():
     from_place = None
@@ -119,11 +117,12 @@ def get_travel_details():
             to_place = recognize_speech()
             if to_place:
                 SpeakText("Destination location is " + to_place)
-    
+
     return {
-        'from_place': from_place,
-        'to_place': to_place,
+        'from_place': str(from_place.capitalize()),
+        'to_place': str(to_place.capitalize()),
     }
+
 
 ```
  
@@ -287,10 +286,13 @@ if __name__ == '__main__':
         pass
     else:
         logic_checking()
+
 ``` 
 
 ## Output:
-![ticket](https://github.com/vigneshwar-24/TICKET-BOOKING-BOT-FOR-THE-VISUALLY-IMPAIRED/assets/75234646/68f83354-d0fa-4811-9897-81860ac17d68)
+![1](https://github.com/vigneshwar-24/TICKET-BOOKING-BOT-FOR-THE-VISUALLY-IMPAIRED/assets/75234646/1e5f14f4-d26f-43a2-b688-7d010127cf57)
+
+![2](https://github.com/vigneshwar-24/TICKET-BOOKING-BOT-FOR-THE-VISUALLY-IMPAIRED/assets/75234646/bec43b33-8aee-41c3-8f06-1cfd49305594)
 
 ## _Conclusion_ :
 With the aid of this bot, the process will be easier and much more faster over the existing way of ticket booking. It improves their way of living and technological advancement is applied in a way that everyone can improve their standard of living.
